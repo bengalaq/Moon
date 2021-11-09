@@ -1,14 +1,19 @@
 ---
 layout: page
-title: About the Theme
-tags: [about, Jekyll, theme, moon]
-date: 2016-03-21
+title: Sobre este Blog
+subtitle: y quien escribe :)
+tags: [acerca, blog, lenguaje, autor]
+date: 2021-11-08
 comments: false
 ---
-    
-<center><a href="http://taylantatli.github.io/Moon"><b>Moon</b></a> is a minimal, one column jekyll theme.</center>
+<figure>
+	<img src="../{{site.io}}" class="img-circle zoombtn animated fadeIn">
+</figure>
+<center>Mi nombre es Augusto. Soy programador y últimamente decidí enfocarme al mundo blockchain.</center>
+<hr/>
+<center>Web 3.0 me parece súper interesante, y el lenguaje no debería ser un limitante para aquella persona que quiera introducirse en este nuevo paradigma. Por ello este blog estará escrito 100% en español, para que aquel hispanohablante con ganas de aprender, también disponga de recursos en su idioma natal. Posteriormente, iré actualizando los posteos para que estén tanto en español como en inglés.</center>
 
-## Features
+<!-- ## Features
 * Minimal, you can focus on your content
 * Responsive
 * Disqus integration
@@ -34,4 +39,4 @@ See a [live version of Moon](http://taylantatli.github.io/Moon) hosted on GitHub
 
 To learn how to install and use this theme check out the [Setup Guide](http://taylantatli.me/Moon/moon-theme/) for more information.
       
-[Install Moon](https://github.com/TaylanTatli/Moon){: .btn}
+[Install Moon](https://github.com/TaylanTatli/Moon){: .btn} -->

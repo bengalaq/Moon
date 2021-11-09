@@ -1,25 +1,31 @@
 	<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
 		<button class="dl-trigger">Open Menu</button>
 		<ul class="dl-menu">
-			<li><a href="{{ site.url }}/">Home</a></li>
+			<li><a href="{{ site.url }}/">Inicio</a></li>
+      <li>
+				<a href="#">Posts</a>
+				<ul class="dl-submenu">
+					<li><a href="{{ site.url }}/posts/">Todos</a></li>
+					<li><a href="{{ site.url }}/tags/">Buscar por tag</a></li>
+				</ul>
+			</li>
 			<li>
-				<a href="#">About</a>
+				<a href="#">Acerca de</a>
 				<ul class="dl-submenu">
 					<li>
 						<img src="{{ site.url }}/{{ site.logo }}" alt="{{ site.title }} photo" class="author-photo">
 						<h4>{{ site.title }}</h4>
-						<p>{{ site.description }}</p>
 					</li>
-					<li><a href="{{ site.url }}/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+					<li><a href="{{ site.url }}/about/"><span class="btn btn-inverse">Más</span></a></li>
 					{% if site.email %}<li>
                         <a href="mailto:{{ site.email }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
                     </li>{% endif %}
                     {% if site.twitter %}<li>
                         <a href="http://twitter.com/{{ site.twitter }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
                     </li>{% endif %}
-                    {% if site.facebook %}<li>
+                    <!-- {% if site.facebook %}<li>
                         <a href="http://facebook.com/{{ site.facebook }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-facebook-square"></i> Facebook</a>
-                    </li>{% endif %}
+                    </li>{% endif %} -->
                     {% if site.google.plus %}<li>
                         <a href="http://plus.google.com/+{{ site.google.plus }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-google-plus-square"></i> Google+</a>
                     </li>{% endif %}
@@ -29,9 +35,9 @@
                     {% if site.xing %}<li>
                         <a href="http://www.xing.com/profile/{{ site.xing }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-xing-square"></i> Xing</a>
                     </li>{% endif %}
-                    {% if site.instagram %}<li>
+                    <!-- {% if site.instagram %}<li>
                         <a href="http://instagram.com/{{ site.instagram }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-instagram"></i> Instagram</a>
-                    </li>{% endif %}
+                    </li>{% endif %} -->
                     {% if site.tumblr %}<li>
                         <a href="http://{{ site.tumblr }}.tumblr.com" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-tumblr-square"></i> Tumblr</a>
                     </li>{% endif %}
@@ -84,13 +90,6 @@
                         <a href="https://news.ycombinator.com/user?id={{ site.hackernews }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-hacker-news"></i> Hacker News</a>
                     </li>{% endif %}
 				</ul><!-- /.dl-submenu -->
-			</li>
-			<li>
-				<a href="#">Posts</a>
-				<ul class="dl-submenu">
-					<li><a href="{{ site.url }}/posts/">All Posts</a></li>
-					<li><a href="{{ site.url }}/tags/">All Tags</a></li>
-				</ul>
 			</li>
 			{% for link in site.data.navigation %}
 		    {% if link.url contains 'http' %}

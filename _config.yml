@@ -1,14 +1,16 @@
 # Site
-title:              Moon
-bio:                'Minimal, one column jekyll theme.'
-description:        "Moon is a minimal, one column jekyll theme for your blog."
+title:              bengalaQ
+bio:                'Blockchain y Web 3.0 para todes.'
+description:        "Blog personal donde escribo mis aprendizajes sobre blockchain"
 reading_time:       true
 words_per_minute:   200
-logo:               'assets/img/logo.png'
-background:         'assets/img/placeholder-big.jpg'
+logo:               'assets/img/logotest2.png'
+io:                 'assets/img/io.png'
+background:         'assets/img/bengalClouds.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
-url:                https://taylantatli.github.io/Moon
+url:                http://localhost:4000
+# url:              https://taylantatli.github.io/Moon
 
 # Jekyll
 permalink:          /:title/
@@ -37,10 +39,10 @@ disqus_shortname:   taylantatli
   #ad-client:
   #ad-slot:
 #bing-verify:
-#email:
-twitter:            username
+email:              redbengal4@gmail.com
+twitter:            AugustitoQ
 facebook:           username
-github-url:         username
+github-url:         bengalaq
 #stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
 #linkedin:          username
 #xing:              username
@@ -50,7 +52,7 @@ instagram:          username
 #medium:            '@username'
 #pinterest:         username
 #foursquare:        username
-steam:              username
+# steam:              username
 #dribbble:          username
 #youtube:           username
 #youtube-channel:   channel
