@@ -4,6 +4,8 @@ Utilizo *Moon Jekyll Theme* [![Donate](https://img.shields.io/badge/paypal-donat
 
 Si les gusta, pueden crear el suyo mediante un fork a [este repo](https://github.com/TaylanTatli/Moon) --> No olviden dejar su ⭐
 
-### Espero que este espacio pueda ayudarte en tu búsqueda por mejorar, tanto como me ayudó a mí.
+Para el desarrollo local, deben correr el comando ```bundle install```. Una vez ejecutado, pueden probar su diseño con ```bundle exec jekyll serve```.
 
-### ¡Que tengas buen día!
+Espero que este espacio pueda ayudarte en tu búsqueda por mejorar, tanto como me ayudó a mí.
+
+¡Que tengas buen día!

@@ -11,7 +11,7 @@ comments: false
 </figure>
 <center>Mi nombre es Augusto. Soy programador y últimamente decidí enfocarme al mundo blockchain.</center>
 <hr/>
-<center>Web 3.0 me parece súper interesante, y el lenguaje no debería ser un limitante para aquella persona que quiera introducirse en este nuevo paradigma. Por ello este blog estará escrito 100% en español, para que aquel hispanohablante con ganas de aprender, también disponga de recursos en su idioma natal. Posteriormente, iré actualizando los posteos para que estén tanto en español como en inglés.</center>
+<center>Web 3.0 me parece súper interesante, y el lenguaje no debería ser un limitante para aquella persona que quiera introducirse en este nuevo paradigma. Por ello este blog estará escrito 100% en español y lenguaje inclusivo, para que aquel hispanohablante con ganas de aprender, también disponga de recursos en su idioma natal. Posteriormente, iré actualizando los posteos para que estén tanto en español como en inglés.</center>
 
 <!-- ## Features
 * Minimal, you can focus on your content
