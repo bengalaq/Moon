@@ -7,13 +7,13 @@ tag: [hardhat, metamask, configuracion, cte]
 comments: true
 ---
 <figure class="half">
-	<img src="../assets/img/2021-11-14-configuration-intro/hardhat.png">
-	<img src="../assets/img/2021-11-14-configuration-intro/vscode.png">
+	<img src="../assets/img/2022-05-09-configuration-intro/hardhat.png">
+	<img src="../assets/img/2022-05-09-configuration-intro/vscode.png">
 </figure>
 
 <figure class="half">
-  <img src="../assets/img/2021-11-14-configuration-intro/capturetheether.png">
-  <img src="../assets/img/2021-11-14-configuration-intro/metamask.png">
+  <img src="../assets/img/2022-05-09-configuration-intro/capturetheether.png">
+  <img src="../assets/img/2022-05-09-configuration-intro/metamask.png">
 </figure>
 
 En este primer posteo, lo que haremos será:
