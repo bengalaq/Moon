@@ -243,7 +243,7 @@ describe("Nickname", async ()=>{
 * Invocando función *setNickname*.
   * ***¿Desde qué cuenta se llama a la función?*** Bueno, ¿Te acordás cuando al correr ```npx hardhat node``` Hardhat nos mostró como 20 cuentas? Ethers va a usar la primera de todas, es decir, nuestra *Account 0*. En otro momento, tal vez necesitemos invocar funciones de contratos desde otras cuentas, pero no te preocupes, eso es problema de tu yo del futuro.
   * ***¿Await?*** Las transacciones no ocurren al instante. Por eso es necesario esperar y mantener un orden. Paciencia muchache...
-  * ***¿formatBytes32String?*** Si te fijás, en el código propuesto por el juego, la función *setNickname* recibe por parámetro un nickname de tipo *bytes32*. Así como muchos lenguajes, solidity también tiene sus tipos (<a href="https://www.youtube.com/watch?v=k1ePkrGLrlA">esto no es javascript papi</a>). Con el tiempo aprenderás todos, no son muchos pero hay algunas trampitas.
+  * ***¿formatBytes32String?*** Si te fijás, en el código propuesto por el juego, la función *setNickname* recibe por parámetro un *nickname* de tipo *bytes32*. Así como muchos lenguajes, solidity también tiene sus tipos (<a href="https://www.youtube.com/watch?v=k1ePkrGLrlA">esto no es javascript papi</a>). Con el tiempo aprenderás todos, no son muchos pero hay algunas trampitas. Sin embargo no estamos soles en esta lucha, *ethers* nos va a echar una mano muchas veces con sus métodos dentro de *utils*, por ejemplo. A medida que avanzemos, te va a servir muchísimo leer su documentación, que podés encontrarla <a href="https://docs.ethers.io/ethers.js/v3.0/html/">acá</a> por cierto.
   * ***expect:*** Necesitamos tener la certeza de que nuestro test logró su cometido. Con expect podemos ver si nuestro resultado es el esperado.
 
 
@@ -263,7 +263,7 @@ Si le dás click, algo maravilloso pasará: entrarás al <a href="https://ethere
 
 <img src="/imagenes/01-13.png">
 
-Lo copiamos y lo pegamos como valor de *blockNumber* en nuestro hardhat.config.ts. ¿Qué ganamos con esto? Principalmente acelerar la velocidad hasta 20 veces más. Hardhat utiliza este bloque como "bloque fijo" para poder crear una especie de memoria caché en disco con la información referida a la blockchain. Para ello le es imprescindible contar con un nodo completo como el elegimos anteriormente de Alchemy (todo va conectándose poco a poco, ¿viste?).
+Lo copiamos y lo pegamos como valor de *blockNumber* en nuestro *hardhat.config.ts*. ¿Qué ganamos con esto? Principalmente acelerar la velocidad hasta 20 veces más. Hardhat utiliza este bloque como "bloque fijo" para poder crear una especie de memoria caché en disco con la información referida a la blockchain. Para ello le es imprescindible contar con un nodo completo como el que elegimos anteriormente de Alchemy (todo va conectándose poco a poco, ¿viste?). Así que eso, estaremos constantemente cambiando el blockNumber desafío a desafío. ¡No te olvides!
 
 Ya con el blockNumber establecido, corremos nuevamente ```npx hardhat node```, mientras que en otra consola, ejecutamos el test con
 
@@ -283,7 +283,7 @@ Dato de color, si revisamos la consola en la que levantamos la blockchain local 
 
 ## *Correr el test en la red de Ropsten*
 
-No es nada distinto a lo que hicimos anteriormente, solo hay que cambiar de objetivo. Como ya tenemos configurada nuestra red Ropsten en hardhat.config.ts, lo hacemos de la siguiente forma
+No es nada distinto a lo que hicimos anteriormente, solo hay que cambiar de objetivo. Como ya tenemos configurada nuestra red Ropsten en *hardhat.config.ts*, lo hacemos de la siguiente forma
 
 ~~~
 npx hardhat test .\test\nickname.ts --network ropsten
@@ -299,7 +299,7 @@ Finalizado el test, puedes dar click en el botón de *Check solution* y disfruta
 Que tengas buen día, no te alteres :)
 
 
-*BengalaQ*
+*bengalaQ*
 
 
 

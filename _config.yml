@@ -9,9 +9,8 @@ io:                 'assets/img/io.png'
 background:         'assets/img/bengalClouds.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
-url:                https://bengalaq.github.io
-# url:                http://localhost:4000 LOCAL
-# url:              https://taylantatli.github.io/Moon
+# url:                https://bengalaq.github.io
+url:                http://localhost:4000
 
 # Jekyll
 permalink:          /:title/
