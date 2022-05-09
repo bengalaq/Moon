@@ -6,3 +6,4 @@ gem "jekyll-gist"
 gem 'jekyll-mentions'
 gem 'jekyll-feed'
 gem 'bigdecimal', '1.3.5'
+gem 'jemoji'
