@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Sobre este Blog
-subtitle: y quien escribe :)
+subtitle: Y quien escribe :)
 tags: [acerca, blog, lenguaje, autor]
 date: 2021-11-08
 comments: false
@@ -12,6 +12,9 @@ comments: false
 <center>Mi nombre es Augusto. Soy programador y decidí enfocarme al mundo blockchain, más específicamente a la seguridad.</center>
 <hr/>
 <center>Web 3.0 me parece súper interesante, y el idioma no debería ser un limitante para aquella persona que quiera introducirse en este nuevo paradigma. Por ello, este blog estará escrito 100% en español y lenguaje inclusivo, para que aquel hispanohablante con ganas de aprender, también disponga de recursos en su lengua natal. Posteriormente, iré actualizando los posteos para que estén tanto en español como en inglés.</center>
+<br>
+<center>Espero que tengas un día genial.</center>
+<center>bengalaQ</center>
 
 <!-- ## Features
 * Minimal, you can focus on your content
