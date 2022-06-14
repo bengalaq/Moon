@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Capture The Ether - Capítulo 1"
+title: "Capture The Ether - Parte 1"
 date: 2022-05-15
 excerpt: "Capítulo 1 de la serie de desafíos en CTE"
 tag: [cte, challenge, resolución]
@@ -266,10 +266,10 @@ contract GuessTheRandomNumberChallenge {
 <div id="lectura3" style="display:none">
   <ul>
     <li style="white-space:nowrap;">
-      El hash criptográfico (answerHash) es <b>0xdb81b4d58595fbbbb592d3661a34cdca14d7ab379441400cbfa1b78bc447c365</b>.
+      La variable <i>answer</i> puede valer entre 0 y 255.
     </li>
     <li>
-      La función <i><b>guess</b></i> en esta ocasión compara el <i><b>keccak256</b></i> (vaya uno a saber qué es eso) de un número que le pasemos, con el <i><b>answerHash</b></i>.
+      Se utiliza nuevamente la función keccak.
     </li>
   </ul>
 </div>
@@ -280,10 +280,10 @@ contract GuessTheRandomNumberChallenge {
 <div id="ideasSoluciones3" style="display:none">
   <ul>
     <li>
-      Averiguar qué es <i><b>keccak256</b></i>.
+      Si solo existen 256 valores posibles para la variable <i>answer</i>, ¿Podríamos probar una por una?.
     </li>
     <li>
-      Encontrar un "n" que pasado por parámetro a ese <i><b>keccak256</b></i> raro, logre generar algo igual al <i><b>answerHash</b></i>.
+      Si todo código y estado de un contrato es público en la blockchain, debe existir alguna forma de verlo, ¿No?.
     </li>
   </ul>
 </div>
@@ -291,16 +291,13 @@ contract GuessTheRandomNumberChallenge {
 ### Explicación:
 <button class="btn btn-warning" id="botonRevelarExplicacion3" onclick="revelarSeccion(document.getElementById('explicacion3'), 'botonRevelarExplicacion3')">Revelar</button>
 <div id="explicacion3" style="display: none">
-  <h4><i><u>Keccak256</u></i></h4>
-  <i><b>Keccak256</b></i> es una función hash. Las funciones hash, son funciones que toman una entrada, y generan un resultado de tal forma que la probabilidad de poder crear ese mismo resultado con otra entrada distinta, sea muy (muy, muy, muy, extremadamente muy) baja. En caso que ésta función hash pueda predefinir su conjunto de entrada, la misma es llamada "función hash perfecta", o lo que matemáticamente se le conoce como <i><b>función inyectiva</b></i> (al valor 1 solo le pertenece el valor D, tal y como muestra la imagen).
+  <h4><i><u>Intentos uno por uno de los 256 valores</u></i></h4>
+  Si revisamos la función <i><b>guess</b></i> veremos que inicialmente se necesita 1 ether para invocarla, lo cual resulta un inconveniente (en el peor de los casos gastaremos 256 ether). Además, pueden existir herramientas de monitoreo que detecten nuestros numerosos intentos.
   <br>
 
-  <img src="/imagenes/02-1.png">
+  <h4><i><u>Buscar valor público de <i>answer</i></u></i></h4>
 
-  Con esto nos va a alcanzar. Quedan muchas interrogantes sobre esta función (obviamente, no esperabas que semejante belleza terminara de entenderse en 5 renglones, ¿O sí?), pero las veremos más a futuro. De momento, estamos sobrados.
-
-  <h4><i><u>Encontrar "n"</u></i></h4>
-  Sabemos que es un número por el tipo de dato que debe recibir "guess" (uint8), un número entero positivo que se pueda formar con 8 bits.
+  Toda la información en la blockchain, aún las variables privadas de un Smart Contract, son públicas. Tal vez no son posibles de leer desde un contrato, pero con librerías como ethers js o Web3 sí es posible, tal y como se demuestra en este ejercicio. Lo importante a entender acá es que el llamado <b>storage</b>, lugar donde se almacena el estado del contrato, es público y podemos acceder a él tanto mediante código, como a través de un exploradores de bloques como etherscan.
 </div>
 
 ### Test a ejecutar:
@@ -338,11 +335,20 @@ describe("Guess The Random Number", async ()=>{
 })
 
 {% endhighlight %}
+
+Sin embargo, no quiero dejar de remarcar la posibilidad de encontrar el <i>answer</i> simplemente observando la transacción en etherscan:
+<br>
+<br>
+<b>Imagen</b> 1) Buscamos el address donde se deployó el contrato -> Internal Txns -> Elegimos la transacción con la que se creó.
+<br>
+<img src="/imagenes/02-Etherscan1.png">
+<br>
+<b>Imagen 2)</b> State -> Buscamos el cambio de estado de 0 ETH a 1 ETH, que sería cuando se creó el contrato y se modificó el state (variable answer) -> Observamos el storage y al hexadecimal del campo "After" le indicamos desde el desplegable que queremos verlo en formato "Number" -> Observamos el valor oculto y realizamos la llamada guess con el parámetro correspondiente.
+<img src="/imagenes/02-Etherscan2.png">
 </div>
 
 ### Conclusión:
-Siempre es interesante recordar que un atacante dispone de 2 cosas: tiempo y recursos infinitos. Pretender que una entrada "n" es imposible de hallar, cuando se comparte públicamente en la blockchain la lógica que aplicamos, es subestimar esos 2 elementos mencionados anteriormente.
-
+Existen 3 tipos de visibilidad para las variables: public, internal y private. Sin embargo, cuando hablamos de esta visibilidad, nos estamos refiriendo a si otro contrato puede o no ver su contenido. Fuera de los contratos, cualquier persona puede analizar el estado del contrato, desde etherscan por ejemplo, y encontrar el valor actual de cierta variable. Todo es público y transparente, por eso amamos la web 3.0 😎
 
 <script>
 function revelarSeccion(HTMLElement, nombreBoton) {
