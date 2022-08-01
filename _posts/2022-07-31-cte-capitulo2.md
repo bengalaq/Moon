@@ -133,7 +133,7 @@ contract GuessTheNewNumberChallenge {
     <b>Contrato que usaremos para atacar a GuessTheNewNumberChallenge</b>
   </div>
   <br>
-  <img src="/imagenes/03-Solucion-GuessTheNewNumber.png">
+  <img src="/imagenes/03-Solucion GuessTheNewNumber.png">
   <br>
   <br>
 
