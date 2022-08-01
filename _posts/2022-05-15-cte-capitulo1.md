@@ -266,7 +266,7 @@ contract GuessTheRandomNumberChallenge {
 <div id="lectura3" style="display:none">
   <ul>
     <li style="white-space:nowrap;">
-      La variable <i>answer</i> puede valer entre 0 y 255.
+      La variable <i>answer</i> puede valer entre 0 y 255 (por ser de tipo <i>uint8</i>).
     </li>
     <li>
       Se utiliza nuevamente la función keccak.
