@@ -8,19 +8,24 @@ comments: true
 ---
 
 <img src="/imagenes/02-Titulo.png">
+<br>
+<div style="text-align:center;">
+Antes de comenzar, quería aprovechar este breve párrafo para aclarar un poco la filosofía de este blog. Pese a estar indefectiblemente enseñando la solución a los problemas, <b>NO ES LO IDEAL EN ABSOLUTO</b> recurrir a esta explicación sin antes intentarlo por cuenta propia. No importa cuánto demores, muchos de estos desafíos enseñan, más allá del conocimiento, a ser pacientes con uno mismo y adquirir esa habilidad de <b><i><a href="https://www.youtube.com/watch?v=C0JbAJmf9eI&t=9s">levantarse y seguir intentando</a></i></b>. Por ello, la metodología de <i>Lectura-Ideas-Test-Explicación-Conclusión</i> se enseñará solo dando click a los botones de "Revelar", con lo que vas a poder obtener pistas de una forma más atómica. Dicho esto, si no entendiste el problema del todo o querés ver cómo lo resolvió otra persona, ¡Bienvenide! Estás en el lugar que soñabas 😎.
 
-Antes de comenzar, quería aprovechar este breve párrafo para aclarar un poco la filosofía de este blog. Pese a estar indefectiblemente enseñando la solución a los problemas, **NO ES LO IDEAL EN ABSOLUTO** recurrir a esta explicación sin antes intentarlo por cuenta propia. No importa cuánto demores, muchos de estos desafíos enseñan, más allá del conocimiento, a ser pacientes con uno mismo y adquirir esa habilidad de <a href="https://www.youtube.com/watch?v=C0JbAJmf9eI&t=9s">*levantarse y seguir intentando*</a>. Por ello, la metodología de *Lectura-Ideas-Test-Explicación-Conclusión* se enseñará solo dando click a los botones de "Revelar", con lo que vas a poder obtener pistas de una forma más atómica. Dicho esto, si no entendiste el problema del todo o querés ver cómo lo resolvió otra persona, ¡Bienvenide! Estás en el lugar que soñabas 😎.
+<p>En este primer capítulo intentaré explicar los desafíos:</p>
 
-En este primer capítulo intentaré explicar los desafíos:
-
-1. ***<span style="color:#0008ffb8">Guess the number</span>***
-2. ***<span style="color:black">Guess the secret number</span>***
-3. ***<span style="color:#009d9d">Guess the random number</span>***
-
-# ***<span style="color:#3f45f5b8">1. Guess the number</span>***
-### <span style="color:#ff0000c4">Problema:</span> *Estoy pensando en un número. Todo lo que tienes que hacer es adivinarlo.*
-
-El contrato que atacaremos será el siguiente
+<span><b>1. </b>Guess the number</span>
+<br>
+<span><b>2. </b>Guess the secret number</span>
+<br>
+<span><b>3. </b>Guess the random number</span>
+<h1 style="color:#089990; margin-bottom: 0px;">1. Guess the number</h1>
+<h2 style="margin-bottom: 0px; margin-top: 0px">Problema:</h2>
+<b><i>"Estoy pensando en un número. Todo lo que tienes que hacer es adivinarlo."</i></b>
+<br>
+<br>
+<p>El contrato que atacaremos será el siguiente</p>
+</div>
 
 {% highlight typescript %}
 
@@ -99,11 +104,18 @@ describe("Guess The Number", async () => {
 
 ### Conclusión:
 Leer código es SÚPER importante. Así, muchas veces encontraremos cosas que los desarrolladores olvidaron borrar o simplemente pensaron que no habría problema alguno en dejarlo ahí, a nuestro alcance. Conoce a tu enemigo y esas cosas, vos me entendés...
+<br>
+<br>
 
-# *<span style="color:black">2. Guess the secret number</span>*
-### <span style="color:#ff0000c4">Problema:</span> *Esta vez solo guardé el hash del número. Buena suerte reverseando el hash criptográfico!*
-
-El contrato que atacaremos será el siguiente
+<hr>
+<div style="text-align:center">
+<h1 style="color:#089990; margin-bottom: 0px;">2. Guess the secret number</h1>
+<h2 style="margin-bottom: 0px; margin-top: 0px">Problema:</h2>
+<b><i>"Esta vez solo guardé el hash del número. Buena suerte reverseando el hash criptográfico!"</i></b>
+<br>
+<br>
+<p>El contrato que atacaremos será el siguiente</p>
+</div>
 
 {% highlight typescript %}
 
@@ -228,11 +240,18 @@ describe("Guess The Secret Number", async () => {
 
 ### Conclusión:
 Siempre es interesante recordar que un atacante dispone de 2 cosas: tiempo y recursos infinitos. Pretender que una entrada "n" es imposible de hallar, cuando se comparte públicamente en la blockchain la lógica que aplicamos, es subestimar esos 2 elementos mencionados anteriormente.
+<br>
+<br>
 
-# *<span style="color:#009d9d">3. Guess the random number</span>*
-### <span style="color:#ff0000c4">Problema:</span> *Esta vez el número es generado basándose en un par de fuentes bastante aleatorias.*
-
-El contrato que atacaremos será el siguiente
+<hr>
+<div style="text-align:center">
+<h1 style="color:#089990; margin-bottom: 0px;">3. Guess the random number</h1>
+<h2 style="margin-bottom: 0px; margin-top: 0px">Problema:</h2>
+<b><i>"Esta vez el número es generado basándose en un par de fuentes bastante aleatorias."</i></b>
+<br>
+<br>
+<p>El contrato que atacaremos será el siguiente</p>
+</div>
 
 {% highlight typescript %}
 
