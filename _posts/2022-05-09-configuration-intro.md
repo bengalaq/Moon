@@ -22,6 +22,15 @@ En este primer posteo, lo que haremos será:
 2. ***Conectar nuestra cuenta de Metamask con Hardhat.***
 3. ***Resolver un desafío de CTE con nuestro entorno ya listo.***
 
+<hr>
+<div style="text-align:center">
+<b><i><u>ACTUALIZACIÓN 10/22:</u></i></b>
+</div>
+<div style="text-align:center">
+Luego de <a href="https://ethereum.org/en/upgrades/merge/">The Merge</a>, ciertas redes de prueba fueron deprecadas (entre ellas Ropsten). Por este motivo, recomiendo que todas las interacciones con la red Ropsten mencionadas aquí, sean intercambiadas por la red local de hardhat. No obstante, tener en cuenta que los pasos explicados para la conexión con un nodo continúan siendo válidos. 
+</div>
+<hr>
+
 # 1. Hardhat
 
 ## *¿Qué es?*
