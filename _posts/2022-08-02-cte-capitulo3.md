@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Capture The Ether - Parte 3"
-date: 2022-08-02
+date: 2022-12-11
 excerpt: "Capítulo 3 de la serie de desafíos en CTE"
 tag: [cte, challenge, resolución]
 comments: true
