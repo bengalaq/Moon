@@ -336,7 +336,7 @@ beforeEach(async () => {
   else {
     tokenWhaleContract = await tokenWhaleFactory.deploy(await cuenta1.getAddress());
     await tokenWhaleContract.deployed();
-    console.log(`CONTRATO TOKEN_SALE DEPLOYADO EN:`, tokenWhaleContract.address);
+    console.log(`CONTRATO TOKEN_WHALE DEPLOYADO EN:`, tokenWhaleContract.address);
   }
 
   cuenta2Contract = tokenWhaleContract.connect(cuenta2); //Para poder invocar funciones del contrato desde otra address, se le asocia el signer de la cuenta 2 de hardhat.
@@ -373,7 +373,6 @@ describe("Token Whale", async () => {
 })
 
 {% endhighlight %}
-  <br>
   <br>
   <!-- <b><i>ACLARACIONES</i></b>:
   <ul>
