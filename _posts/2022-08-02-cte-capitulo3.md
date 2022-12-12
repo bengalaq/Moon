@@ -268,10 +268,10 @@ contract TokenWhaleChallenge {
 <div id="lectura2" style="display:none">
   <ul>
     <li style="white-space:wrap;">
-     Completar
+     El contrato utiliza una versión vulnerable a overflows y underflows.
     </li>
     <li>
-      Completar
+      Los balances se modifican solo en la función <b><i>_transfer</i></b>
     </li>
   </ul>
 </div>
@@ -282,10 +282,10 @@ contract TokenWhaleChallenge {
 <div id="ideasSoluciones2" style="display:none">
   <ul>
     <li>
-      <i>Completar</i>.
+      Si los balances solo se modifican en la función <b><i>_transfer</i></b>, resulta interesante analizar cómo funciona tanto en su llamada desde <b><i>transfer</i></b> como <b><i>transferFrom</i></b>.
     </li>
     <li>
-      <i>Completar()</i>.
+      ¿Qué ocurriría si usamos más de una cuenta para romper el contrato?
     </li>
   </ul>
 </div>
@@ -293,7 +293,7 @@ contract TokenWhaleChallenge {
 ### Explicación:
 <button class="btn btn-warning" id="botonRevelarExplicacion2" onclick="revelarSeccion(document.getElementById('explicacion2'), 'botonRevelarExplicacion2')">Revelar</button>
 <div id="explicacion2" style="display: none">
-  <h4><i><u>Completar</u></i></h4>
+  El problema principal del contrato radica en el uso de la variable global <i>msg.sender</i>. Con la ayuda de una cuenta auxiliar, podemos lograr una transferencia que genere un underflow en el balance de esta para luego, transferir este excedente a la cuenta atacante.
   <br>
   <br>
 </div>
@@ -305,7 +305,6 @@ contract TokenWhaleChallenge {
   <div style="text-align:center">
     <b>Test que ejecutaremos</b> 
     <br>
-    <i>PD: Recordar cambiar las address según corresponda.</i>
   </div>
   <br>
 
@@ -317,7 +316,7 @@ import { Contract, Signer } from "ethers";
 
 let tokenWhaleContract: Contract;
 let cuenta2Contract: Contract;
-const challengeAddress: string = "0xeA3ba03A26C73aaf5fc31B51d72f2A2b1D1aFED6";
+const challengeAddress: string = "";
 let accounts: Signer[];
 let cuenta1: Signer;
 let cuenta2: Signer;
@@ -329,9 +328,18 @@ beforeEach(async () => {
   [cuenta1, cuenta2, cuenta3] = accounts.slice(0,3);
 
   const tokenWhaleFactory = await ethers.getContractFactory("TokenWhaleChallenge");
-  tokenWhaleContract = tokenWhaleFactory.attach(challengeAddress);
-  cuenta2Contract = tokenWhaleContract.connect(cuenta2); //Para poder invocar funciones del contrato desde otra address, se le asocia el signer de la cuenta 2 de hardhat.
+ 
+  if (challengeAddress.length > 1) {
+    tokenWhaleContract = tokenWhaleFactory.attach(challengeAddress);
+    console.log(`INSTANCIA CONTRATO TOKEN_WHALE UTILIZADA DESDE:`, tokenWhaleContract.address);
+  }
+  else {
+    tokenWhaleContract = await tokenWhaleFactory.deploy(await cuenta1.getAddress());
+    await tokenWhaleContract.deployed();
+    console.log(`CONTRATO TOKEN_SALE DEPLOYADO EN:`, tokenWhaleContract.address);
+  }
 
+  cuenta2Contract = tokenWhaleContract.connect(cuenta2); //Para poder invocar funciones del contrato desde otra address, se le asocia el signer de la cuenta 2 de hardhat.
 })
 
 describe("Token Whale", async () => {
@@ -367,7 +375,7 @@ describe("Token Whale", async () => {
 {% endhighlight %}
   <br>
   <br>
-  <b><i>ACLARACIONES</i></b>:
+  <!-- <b><i>ACLARACIONES</i></b>:
   <ul>
     <li>
       Completar
@@ -375,12 +383,12 @@ describe("Token Whale", async () => {
     <li>
      Completar
     </li>
-  </ul>
+  </ul> -->
   
 </div>
 
 ### Conclusión:
-Completar
+Cuando se utilizan funciones auxiliares para lograr mayor comprensión o reutilización de código, es sumamente importante tener en cuenta qué valores pueden adoptar las variables globales a lo largo del flujo completo de una transacción. En este caso, no se contempló que podía ser una cuenta manipulada por la misma persona dueña los tokens iniciales.
 <br>
 <br>
 
@@ -451,10 +459,10 @@ contract RetirementFundChallenge {
 <div id="lectura3" style="display:none">
   <ul>
     <li style="white-space:nowrap;">
-      <i>completar</i>.
+      Otra vez, el contrato utiliza una versión antigua de solidity, vulnerable a overflows y underflows.
     </li>
     <li style="white-space:wrap;">
-      <i>completar</i>.
+      Si según el enunciado nosotres somos los beneficiarios, solo podemos interactuar con la función <b><i>collectPenalty</i></b>. La función <b><i>withdraw</i></b> puede ser utilizada por el jubilade, por lo que conviene entenderla pero no buscar agujeros en ella. 
     </li>
   </ul>
 </div>
@@ -465,7 +473,10 @@ contract RetirementFundChallenge {
 <div id="ideasSoluciones3" style="display:none">
   <ul>
     <li>
-      completar
+      La función <b><i>collectPenalty</i></b> se ocupa de transferirnos el balance del contrato en caso que el jubilade haya pecado por ansioso y retirado ether antes de la fecha prevista (o se haya querido <a href="https://youtu.be/65HrUI5lhNM?t=71">comprar una cama más cómoda</a>).
+    </li>
+    <li>
+      ¿Será posible utilizar la función <b><i>collectPenalty</i></b> sin que el futuro jubilade haya retirado antes su ether? ¿Y tu moral? ¿Te sentirías culpable robando a un crypto-abuelo?
     </li>
   </ul>
 </div>
@@ -473,12 +484,32 @@ contract RetirementFundChallenge {
 ### Explicación:
 <button class="btn btn-warning" id="botonRevelarExplicacion3" onclick="revelarSeccion(document.getElementById('explicacion3'), 'botonRevelarExplicacion3')">Revelar</button>
 <div id="explicacion3" style="display: none">
-  <h4><i><u>completar</u></i></h4>
+  Aquí el underflow ocurre en el siguiente fragmento de código: 
   <br>
   <br>
-  <img src="/imagenes/03-Blockhash.png">
+  <img src="/imagenes/04-RetirementUnderflow.jpg">
   <br>
   <br>
+  En caso de que el balance del contrato sea mayor al balance inicial (1 ether), la variable <i>withdraw</i> pasaría a ser un valor extremadamente elevado, el chequeo podría ser salteado y prodeceríamos a enviarnos todo el balance del contrato a nuestra address. El problema que nos encontramos, es que el contrato no tiene ninguna función para recibir ether (fallback o receive). Entonces: ¿Habrá alguna forma de forzar el envío de ether? ¡La respuesta es sí!
+  <br>
+  <br>
+  <img src="/imagenes/04-Voltorb.PNG">
+  <br>
+  <br>
+  ¿Se acuerdan de él? Se los voy a presentar mejor
+  <br>
+  <br>
+  <img src="/imagenes/04-Voltorb2.PNG">
+  <br>
+  <br>
+  ¿Y a qué viene esta movida del pokemón más creativo de todes que no se parece en nada a una pokebola? Bueno, este personaje tal cual dice su descripción, tiene la capacidad de autodestruirse, o en inglés, de usar <b><i>selfdestruct</i></b>.
+  <br>
+  <br>
+  <u><h2>Selfdestruct</h2></u>
+  Selfdestruct es una palabra reservada en solidity para terminar un contrato, remover su bytecode de la blockchain y <b><i>enviar todos sus fondos a una dirección específica</i></b>. Surgió como "botón de pánico" en el año 2016 para poder detener ataques que sucedían una y otra vez sobre la misma vulnerabilidad. La historia de su creación me parece bastante interesante, pero como nos iríamos muy por las ramas, simplemente te dejo un <a href="https://www.alchemy.com/overviews/selfdestruct-solidity">link</a> para que lo revises si es de tu agrado 🥰.
+  <br>
+  <br>
+  Entonces, si lo que leímos es cierto, podríamos tranquilamente enviar ether desde un contrato <b><i>Voltorb</i></b> mediante un selfdestruct.
 </div>
 
 ### Test a ejecutar:
@@ -488,7 +519,6 @@ contract RetirementFundChallenge {
   <div style="text-align:center">
     <b>Test que ejecutaremos</b> 
     <br>
-    <i>PD: Recordar cambiar las address según corresponda.</i>
   </div>
   <br>
 
@@ -498,17 +528,35 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { BigNumber, Contract, Signer } from "ethers";
 
-let challengeAddress: string = "0x87a93E416c89BE4c519f6A5000FC15b93e6fbdfd";
+let challengeAddress: string = "";
 let retirementFundsContract: Contract;
 let voltorbContract: Contract;
+let accounts: Signer[];
+let owner: Signer;
+let beneficiary: Signer;
 
 beforeEach(async () => {
+  accounts = await ethers.getSigners();
+  [owner, beneficiary] = accounts.slice(0,2);
+
   const retirementFundsFactory = await ethers.getContractFactory("RetirementFundChallenge");
-  retirementFundsContract = retirementFundsFactory.attach(challengeAddress);
+  
+  if (challengeAddress.length > 1) {
+    retirementFundsContract = retirementFundsFactory.attach(challengeAddress);
+    console.log(`INSTANCIA CONTRATO RETIREMENT_FUNDS UTILIZADA DESDE:`, retirementFundsContract.address);
+  }
+  else {
+    retirementFundsContract = (await retirementFundsFactory.deploy(await beneficiary.getAddress(), {value: ethers.utils.parseEther(`1`)})).connect(beneficiary);
+    await retirementFundsContract.deployed();
+    console.log(`CONTRATO RETIREMENT_FUNDS DEPLOYADO EN:`, retirementFundsContract.address);
+  }
+
+
   const voltorbFactory = await ethers.getContractFactory("Voltorb");
   voltorbContract = await voltorbFactory.deploy({
     value: ethers.utils.parseUnits(`1`, `wei`)
   });
+  await voltorbContract.deployed();
 })
 
 describe("Retirement Fund", async () => {
@@ -518,12 +566,12 @@ describe("Retirement Fund", async () => {
     expect(balanceDeVoltorb.toNumber() > 0, "El balance de voltorb no es superior a 0");
 
     //Voltorb usa explosión en contrato enemigo --> Es súper efectivo! (we re nerd)
-    await voltorbContract.explosion(challengeAddress)
-
+    await voltorbContract.explosion(retirementFundsContract.address)
     //Verificamos que tras el selfdestruct, voltorb haya enviado su balance total al contrato del challenge.
     const balanceChallengeContract: BigNumber = await ethers.provider.getBalance(retirementFundsContract.address);
     expect(balanceChallengeContract > ethers.utils.parseEther("1"));
 
+    
     const tx = await retirementFundsContract.collectPenalty();
     await tx.wait();
 
@@ -534,25 +582,31 @@ describe("Retirement Fund", async () => {
 
 {% endhighlight %}
 <br>
-<b><i>ACLARACIONES</i></b>:
+<!-- <b><i>ACLARACIONES</i></b>:
 <ul>
     <li>
      Completar
     </li>
-  </ul>
+  </ul> -->
 </div>
 
 ### Conclusión:
-Completar.
+Hay que ser muy cuidadosos a la hora de aplicar lógica basada en el balance de nuestro contrato. Sumado al overflow que se generó al romper la relación entre el balance inicial y el actual, muchos otros vectores de ataque podrían aparecer si no tenemos los recaudos suficientes para recibir ether.
 <br>
 <br>
 <hr>
 
 <div style="text-align:center">
-  Completar
+  Y así pasaron los 3 primeros desafíos del bloque <b>Math</b>, o mejor dicho la entrada en calor, ya que los 3 restantes son muchísimo más interesante y divertidos para aprender (y también para explicar).
   <br>
   <br>
 
+  Que tengas una noche genial.
+  <br>
+  No te alteres.
+
+  <br>
+  <br>
   bengalaQ
 
 </div>
