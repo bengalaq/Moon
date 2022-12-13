@@ -486,7 +486,7 @@ contract RetirementFundChallenge {
   Aquí el underflow ocurre en el siguiente fragmento de código: 
   <br>
   <br>
-  <img src="/imagenes/04-RetirementUnderflow.jpg">
+  <img src="/imagenes/04-RetirementUnderflow.png">
   <br>
   <br>
   En caso de que el balance del contrato sea mayor al balance inicial (1 ether), la variable <i>withdraw</i> pasaría a ser un valor extremadamente elevado, el chequeo podría ser salteado y prodeceríamos a enviarnos todo el balance del contrato a nuestra address. El problema que nos encontramos, es que el contrato no tiene ninguna función para recibir ether (fallback o receive). Entonces: ¿Habrá alguna forma de forzar el envío de ether? ¡La respuesta es sí!
